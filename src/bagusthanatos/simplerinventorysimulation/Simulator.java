@@ -19,7 +19,7 @@ public class Simulator {
     // kami mendefinisikan bahwa jika jumlah pesanan kurang dari stok, maka
     // shortage cost akan bertambah sebanyak (jumlah pesanan - stok)*harga per Item
     private double holdingCost,totalCost,shortageCost,orderingCost;
-    private final int perH=7,perI=80,perSetup=10;
+    private final int perH=7,perI=80,perSetup=10;// merupakan kelipatan 100K, untuk membuat perhitungan lebih simple
     public Simulator(int min, int max){
         this.maxS=max;
         this.minS=min;
