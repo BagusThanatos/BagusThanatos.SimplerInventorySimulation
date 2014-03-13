@@ -86,6 +86,8 @@ public class Simulator {
         Event a=this.ListCust.peek();
         return (a!=null) ? this.ListCust.remove() : null;
     }
+    
+    
     // for testing only!!
     public double getHC(){
         return this.holdingCost;
