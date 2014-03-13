@@ -18,8 +18,8 @@ public class Simulator {
     // di sini shortage cost didefinisikan sebagai pemasukan yang hilang karena tidak bisa melayani pelanggan
     // kami mendefinisikan bahwa jika jumlah pesanan kurang dari stok, maka
     // shortage cost akan bertambah sebanyak (jumlah pesanan - stok)*harga per Item
-    private double holdingCost,totalCost,shortageCost,orderingCost,setupCost,itemCost;
-    private final long perH=7,perI=80,perSetup=10;
+    private double holdingCost,totalCost,shortageCost,orderingCost;
+    private final int perH=7,perI=80,perSetup=10;
     public Simulator(int min, int max){
         this.maxS=max;
         this.minS=min;
@@ -29,10 +29,8 @@ public class Simulator {
         this.stock=this.maxS;
         this.holdingCost=0.0;
         this.orderingCost=0.0;
-        this.setupCost=0.0;
         this.shortageCost=0.0;
         this.totalCost=0.0;
-        this.itemCost=0.0;
         this.ListCust.clear();// just to make sure..
     }
     public int getClock(){
@@ -45,22 +43,21 @@ public class Simulator {
         this.holdingCost+=i;
     }
     public void inShortCost(double i){
-        this.shortageCost+=1;
+        this.shortageCost+=i;
     }
     public void inOrderCost(double i){
         this.orderingCost+=i;
     }
-    public long hitungHC(int jumMobil){
+    public int hitungHC(int jumMobil){
         return jumMobil*this.perH;
     }
-    public long hitungOrderCost(int jumMobil){
+    public int hitungOrderCost(int jumMobil){
         return this.perI*jumMobil+this.perSetup;
     }
-    public long hitungShortageCost(int jumMobil){
+    public int hitungShortageCost(int jumMobil){
         return this.perI*jumMobil;
     }
     public void reCountCost(){
-        this.orderingCost=this.setupCost+this.itemCost;
         this.totalCost=this.orderingCost+this.holdingCost+this.shortageCost;
     }
     public void setClock(int c){
@@ -70,7 +67,7 @@ public class Simulator {
         this.ListCust.add(e);
     }
     public void checkStock(){
-        if (this.stock<this.maxS){
+        if (this.stock<this.minS){
             this.inOrderCost(hitungOrderCost(this.maxS-this.stock));
             this.reCountCost();
             this.stock=this.maxS;
@@ -89,5 +86,12 @@ public class Simulator {
         Event a=this.ListCust.peek();
         if (a!= null) return this.ListCust.remove();
         else return null;
+    }
+    // for testing only!!
+    public double getHC(){
+        return this.holdingCost;
+    }
+    public double getSC(){
+        return this.shortageCost;
     }
 }
