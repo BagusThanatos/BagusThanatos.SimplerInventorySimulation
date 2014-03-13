@@ -59,7 +59,7 @@ public class BagusThanatosSimplerInventorySimulation {
                     s[i].checkStock();
                     s[i].reCountCost();
                     e=s[i].getNextEvent();
-                   System.out.print(c.getJumMobil()+",");
+                   
                 }
                 s[i].checkStock();
                 s[i].reCountCost();
@@ -77,6 +77,7 @@ public class BagusThanatosSimplerInventorySimulation {
         System.out.println("AVG [30,60]: "+avg[1]/50);
         System.out.println("AVG [40,70]: "+avg[2]/50);
         System.out.println("AVG [10,50]: "+avg[3]/50);
+        System.out.println("NOTE: Semua angka di atas dikali dengan 100 ribu rupiah");
     }
     
 }

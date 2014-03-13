@@ -84,8 +84,7 @@ public class Simulator {
     }
     public Event getNextEvent(){
         Event a=this.ListCust.peek();
-        if (a!= null) return this.ListCust.remove();
-        else return null;
+        return (a!=null) ? this.ListCust.remove() : null;
     }
     // for testing only!!
     public double getHC(){

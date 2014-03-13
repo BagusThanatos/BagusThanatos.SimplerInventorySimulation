@@ -33,7 +33,7 @@ public class Main2 {
                     else {
                         s.deStock(c.getJumMobil());
                     }
-                   System.out.print(c.getJumMobil()+";");
+                   System.out.print(s.getStock()+";");
                    s.checkStock();
                    s.reCountCost();
                    e=s.getNextEvent();
