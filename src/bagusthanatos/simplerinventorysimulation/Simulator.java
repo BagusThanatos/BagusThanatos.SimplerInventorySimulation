@@ -79,6 +79,9 @@ public class Simulator {
     public int getStock(){
         return this.stock;
     }
+    public int getMaxStock(){
+        return this.maxS;
+    }
     public void restock(int a){
         this.stock+=a;
     }

@@ -61,8 +61,10 @@ public class BagusThanatosSimplerInventorySimulation {
                     e=s[i].getNextEvent();
                    
                 }
-                s[i].checkStock();
-                s[i].reCountCost();
+                if (s[i].getStock()<s[i].getMaxStock()){
+                    s[i].inOrderCost(s[i].hitungOrderCost(s[i].getMaxStock()-s[i].getStock()));
+                    s[i].reCountCost();
+                }
                 if (i==0) System.out.print("Total cost [20,40]:");
                 else if (i==1) System.out.print("Total cost [30,60]:");
                 else if (i==2) System.out.print("Total cost [40,70]:");
